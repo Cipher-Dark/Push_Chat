@@ -12,7 +12,20 @@
           "package_name": "com.sagar.push_chat"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "489827988770-10j95llpqug6fsejnf0qc32b8gd0icp5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sagar.push_chat",
+            "certificate_hash": "e58e4daec63d0294dd8f03316929c155f9db75e2"
+          }
+        },
+        {
+          "client_id": "489827988770-hhoiqmri2t7hoqnppbr6m4p91gmae0qf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCHNvDOxP_M-PHfEaw5KCWyGJ9oUNFj3JE"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "489827988770-hhoiqmri2t7hoqnppbr6m4p91gmae0qf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "489827988770-uor4edqkpj47nnl28oi2j65e6vboncuq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sagar.pushChat"
+              }
+            }
+          ]
         }
       }
     }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:push_chat/screens/auth/google_sign_in.dart';
 import 'package:push_chat/screens/home/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -51,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
             height: size.height * .07,
             child: InkWell(
               onTap: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => HomeScreen()));
+                signup(context);
               },
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),

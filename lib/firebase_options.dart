@@ -63,6 +63,9 @@ class DefaultFirebaseOptions {
     messagingSenderId: '489827988770',
     projectId: 'chat-app-c39c3',
     storageBucket: 'chat-app-c39c3.firebasestorage.app',
+    androidClientId: '489827988770-10j95llpqug6fsejnf0qc32b8gd0icp5.apps.googleusercontent.com',
+    iosClientId: '489827988770-uor4edqkpj47nnl28oi2j65e6vboncuq.apps.googleusercontent.com',
     iosBundleId: 'com.sagar.pushChat',
   );
+
 }
