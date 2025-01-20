@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:push_chat/screens/home/home_scree.dart';
+import 'package:push_chat/screens/home/home_screen.dart';
 import 'package:push_chat/screens/profile/profile_screen.dart';
 
 class NavBar extends StatefulWidget {
@@ -36,7 +36,7 @@ class _NavBarState extends State<NavBar> {
         ),
         body: const TabBarView(
           children: [
-            HomeScree(),
+            HomeScreen(),
             ProfileScreen()
           ],
         ),
