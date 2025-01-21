@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:push_chat/api/apis.dart';
 import 'package:push_chat/screens/auth/login_screen.dart';
+import 'package:push_chat/screens/home/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,8 +17,11 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(Duration(seconds: 2), () {
       SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-
-      if (mounted) {
+      if (APIs.auth.currentUser != null) {
+        if (mounted) {
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => HomeScreen()));
+        }
+      } else if (mounted) {
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => LoginScreen()));
       }
     });

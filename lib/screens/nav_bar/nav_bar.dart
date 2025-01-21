@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:push_chat/screens/home/home_screen.dart';
-import 'package:push_chat/screens/profile/profile_screen.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});
@@ -34,10 +33,10 @@ class _NavBarState extends State<NavBar> {
             unselectedLabelColor: Colors.grey,
           ),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: [
             HomeScreen(),
-            ProfileScreen()
+            // ProfileScreen()
           ],
         ),
       ),
