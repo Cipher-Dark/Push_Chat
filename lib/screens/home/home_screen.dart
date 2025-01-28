@@ -1,8 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:push_chat/api/apis.dart';
+import 'package:push_chat/model/chat_model.dart';
+import 'package:push_chat/screens/profile/profile_screen.dart';
+import 'package:push_chat/widgets/chat_user_cart.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    APIs.getCurrentUser();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,22 +33,45 @@ class HomeScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(onPressed: () {}, icon: Icon(Icons.search)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.more_vert)),
+          IconButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (_) => ProfileScreen(user: APIs.uData)));
+              },
+              icon: Icon(Icons.more_vert)),
         ],
         centerTitle: true,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Center(
-            child: Text("Home"),
-          ),
-        ],
+      body: StreamBuilder(
+        stream: APIs.getAllUserData(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Center(child: Text("Error: ${snapshot.error}"));
+          }
+
+          if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+            return Center(child: Text("No Users Found"));
+          }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          }
+
+          return ListView.builder(
+            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .01),
+            itemCount: snapshot.data!.docs.length,
+            physics: BouncingScrollPhysics(),
+            itemBuilder: (context, index) {
+              var user = snapshot.data;
+              return ChatUserCart(
+                chatModel: ChatModel.fromJson(user!.docs[index].data()),
+              );
+            },
+          );
+        },
       ),
       floatingActionButton: Padding(
         padding: EdgeInsets.only(bottom: 10),
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () async {},
           child: Icon(Icons.insert_comment_outlined),
         ),
       ),

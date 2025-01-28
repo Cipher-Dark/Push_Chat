@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:push_chat/screens/auth/google_sign_in.dart';
-import 'package:push_chat/screens/home/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -50,9 +49,9 @@ class _LoginScreenState extends State<LoginScreen> {
             left: size.width * .05,
             width: size.width * .9,
             height: size.height * .07,
-            child: InkWell(
+            child: GestureDetector(
               onTap: () {
-                signup(context);
+                signUp(context);
               },
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
